@@ -23,6 +23,15 @@
             <version>7.4.0</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://github.com/bonigarcia/webdrivermanager -WebDriverManager is a library which allows to automate
+         the management of the drivers (e.g. chromedriver, geckodriver, etc.) required by Selenium WebDriver. -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.4.3</version>
+            <scope>compile</scope>
+        </dependency>
+
 
 
     </dependencies>

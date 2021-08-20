@@ -14,8 +14,11 @@ public class SelectFlightPage {
     private WebDriver driver;
     private WebDriverWait wait;
 
-    @FindBy(css = "th > label")
-    private List<WebElement> tableRows;
+    @FindBy(css = "#input_50_0_0")
+    private WebElement departureFlightRadioBtn;
+
+    @FindBy(css = "#cid_37 > table:nth-child(4) > tbody > tr:nth-child(2) > td:nth-child(2)")
+    private WebElement arrivalFlightRadioBtn;
 
     @FindBy(css = "#reserveFlights")
     private WebElement continueBtn;
@@ -27,24 +30,14 @@ public class SelectFlightPage {
     }
 
     public void selectFlightDeparture(String airline){
-        for(WebElement row : tableRows){
-            if (row.getText().contains(airline)){
-                row.findElement(By.cssSelector(".. + td > input")).click();
-                break;
-            }
-        }
+       departureFlightRadioBtn.click();
     }
 
     public void selectFlightReturn(String airline){
-        for(WebElement row : tableRows){
-            if (row.getText().contains(airline)){
-                row.findElement(By.cssSelector(".. + td > input")).click();
-                break;
-            }
-        }
+        arrivalFlightRadioBtn.click();
     }
 
-    public void goToBillingPage(String airline){
+    public void goToBillingPage(){
         continueBtn.click();
     }
 

@@ -16,7 +16,7 @@ public class RegistrationConfirmationPage {
     @FindBy(css = "register-confirm > div > table > tbody > tr > td > h1 ")
     private WebElement registrationConfirmationPageHeader;
 
-    @FindBy(linkText = " sign-in ")
+    @FindBy(linkText = "sign-in")
     private WebElement signInLink;
 
     @FindBy(id = "flight-link")
@@ -28,12 +28,7 @@ public class RegistrationConfirmationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void verifyPageDisplays(){
-        Assert.that(registrationConfirmationPageHeader.isDisplayed(),"page NOT displayed!");
-    }
-
     public void goToFlightDetailsPage(){
-        verifyPageDisplays();
         wait.until(ExpectedConditions.visibilityOf(signInLink));
         flightsLink.click();
     }

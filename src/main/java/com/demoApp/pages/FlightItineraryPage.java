@@ -37,13 +37,15 @@ public class FlightItineraryPage {
     }
 
     public void verifyTotalPriceIs(String expectedPrice){
-        Assert.that(prices.get(1).getText().equals(expectedPrice), "Expected Total Price is not displayed!!");
+        Assert.that(prices.get(1).getText().contains(expectedPrice), "Expected Total Price is not displayed!!");
+        System.out.println("The expected price is: " + expectedPrice);
+        System.out.println("The actual price is: " + prices.get(1).getText());
     }
 
-    public void printConfirmation(){
+    public void printConfirmation(String expectedPrice){
         wait.until(ExpectedConditions.visibilityOf(flightConfirmationNumber));
+        verifyTotalPriceIs(expectedPrice);
         System.out.println(flightConfirmationNumber.getText());
-        System.out.println(prices.get(1).getText());
         signOffLink.click();
     }
 }

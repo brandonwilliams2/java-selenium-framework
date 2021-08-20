@@ -42,7 +42,7 @@ public class RegistrationPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void goToApp(){
+    public void goTo(){
         driver.get("https://vins-udemy.s3.amazonaws.com/docker/docker-book-flight.html#");
         this.wait.until(ExpectedConditions.visibilityOf(firstNameField));
     }
