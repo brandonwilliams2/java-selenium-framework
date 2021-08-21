@@ -38,6 +38,10 @@ public class FlightDetailsPage {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * Wait for the passengers combo box to load then select the number of passengers
+     * @param numOfPassengers the number of passengers to select
+     */
     public void selectNumberOfPassengers(String numOfPassengers){
         wait.until(ExpectedConditions.elementToBeClickable(passengersCmbBx));
         Select select = new Select(passengersCmbBx);

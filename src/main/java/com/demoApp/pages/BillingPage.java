@@ -20,12 +20,16 @@ public class BillingPage {
     @FindBy(css = "#buyFlights")
     private WebElement continueBtn;
 
+
     public BillingPage(WebDriver driver){
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     * Wait for the continue button to load then click it
+     */
     public void goToFlightItineraryPage(){
         wait.until(ExpectedConditions.elementToBeClickable(continueBtn));
         continueBtn.click();
