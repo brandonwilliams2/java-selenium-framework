@@ -10,7 +10,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class FlightDetailsPage {
 
-    private WebDriver driver;
     private final WebDriverWait wait;
 
     @FindBy(id = "passCount")
@@ -30,7 +29,6 @@ public class FlightDetailsPage {
 
 
     public FlightDetailsPage(WebDriver driver){
-        this.driver = driver;
         this.wait = new WebDriverWait(driver, 30);
         PageFactory.initElements(driver, this);
     }
