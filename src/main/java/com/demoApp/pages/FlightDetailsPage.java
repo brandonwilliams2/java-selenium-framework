@@ -1,6 +1,5 @@
 package com.demoApp.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,12 +8,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
-
 public class FlightDetailsPage {
 
     private WebDriver driver;
-    private WebDriverWait wait;
+    private final WebDriverWait wait;
 
     @FindBy(id = "passCount")
     WebElement passengersCmbBx;
@@ -60,8 +57,6 @@ public class FlightDetailsPage {
 
     public void selectAirline(String airline){
         airlineCmbBx.click();
-//        List<WebElement> airlines = driver.findElements(By.cssSelector(airlineCmbBx + " > option"));
-//        airlines.get(0).click();
         Select select = new Select(airlineCmbBx);
         select.selectByVisibleText(airline);
     }
