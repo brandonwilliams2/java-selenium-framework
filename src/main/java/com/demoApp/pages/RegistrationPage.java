@@ -43,8 +43,8 @@ public class RegistrationPage {
     }
 
     public void goTo(){
-        driver.get("https://vins-udemy.s3.amazonaws.com/docker/docker-book-flight.html#");
-        this.wait.until(ExpectedConditions.visibilityOf(firstNameField));
+        driver.get("https://vins-udemy.s3.amazonaws.com/docker/docker-book-flight.html");
+        wait.until(ExpectedConditions.visibilityOf(firstNameField));
     }
 
     public void enterUserDetails(String firstname, String lastname, String phoneNumber, String email) {

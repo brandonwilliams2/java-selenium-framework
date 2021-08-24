@@ -1,34 +1,22 @@
 package com.demoApp.tests;
 
 import com.demoApp.pages.*;
-import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.tests.BaseTest;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-public class BookFlightTest {
+public class BookFlightTest extends BaseTest {
 
-    private WebDriver driver;
     private String numOfPassengers;
     private String expectedPrice;
 
     @BeforeTest
     @Parameters({"numOfPassengers", "expectedPrice"})
-    public void setUpDriver(String numOfPassengers, String expectedPrice){
+    public void setupParameters(String numOfPassengers, String expectedPrice){
         this.numOfPassengers = numOfPassengers;
         this.expectedPrice = expectedPrice;
-
-        WebDriverManager.chromedriver().setup();
-        this.driver = new ChromeDriver();
-    }
-
-    @AfterTest
-    public void tearDownDriver(){
-        driver.quit();
     }
 
     @Test
