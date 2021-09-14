@@ -36,8 +36,13 @@ public class BaseTest {
             firefoxOptions.setCapability("name", testName);
             this.driver = new RemoteWebDriver(new URL(seleniumHubURL), firefoxOptions);
         }
-        else {
+        else if (System.getProperty("BROWSER") != null && System.getProperty("BROWSER").equalsIgnoreCase("chrome")){
+            chromeOptions.setCapability("name", testName);
             this.driver = new RemoteWebDriver(new URL(seleniumHubURL), chromeOptions);
+        }
+        else if (System.getProperty("BROWSER") == null){
+            WebDriverManager.chromedriver().setup();
+            this.driver = new ChromeDriver();
         }
     }
 

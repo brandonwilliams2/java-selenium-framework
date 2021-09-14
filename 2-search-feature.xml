@@ -1,6 +1,6 @@
 <!-- Example test suite -->
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name= "search-feature">
+<suite name= "search-feature" parallel="tests">
     <test name="search-using-keyword-Java">
         <parameter name ="searchKeyword" value="Java" />
         <classes>
