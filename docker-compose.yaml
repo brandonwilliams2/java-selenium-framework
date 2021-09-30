@@ -28,7 +28,7 @@ services:
       - FEATURE=2-search-feature.xml
       - BROWSER=chrome
     volumes:
-    - "/Users/brandonwilliams/Workspace/Projects/selenium-docker/test-output:/usr/share/selenium-docker/test-output"
+    - "./test-output/search-feature:/usr/share/selenium-docker/test-output"
   book-flight-feature:
     image: brandonwilliams2/selenium-docker
     depends_on:
@@ -39,7 +39,7 @@ services:
       - FEATURE=1-book-flight-feature.xml
       - BROWSER=firefox
     volumes:
-      - "./test-output:/usr/share/selenium-docker/test-output"
+      - "./test-output/book-flight-feature:/usr/share/selenium-docker/test-output"
 
 
 
