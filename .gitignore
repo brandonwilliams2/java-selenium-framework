@@ -1,2 +1,6 @@
 # Ignore other test-output items and directories
+
+.idea
+selenium-docker.iml
+target
 test-output
