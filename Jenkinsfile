@@ -16,7 +16,7 @@ pipeline {
             steps {
 			    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
 			        sh '''
-			            set +x
+
 			            docker login --username=$USER --password=$PASS
 			            docker push brandonwilliams2/selenium-docker:latest
 			        '''
