@@ -12,12 +12,12 @@ WebDriverManager 4.4.3
 
 ## Project Structure:
 
-This project has to source directories: src > main and src > test. 
+This project has two source directories: src > main and src > test. 
 
 ### App.pages
 - src > main > java > com.App.Pages
  
- Location of the Page object classes for all pages of application under test
+ Location of the Page class files for all pages of application under test
 
 #### Page object
 Each page object instance has a WebDriver instance passed in from the calling class (test class), and a new WebdriverWait instance (useful for waiting for Web Elements to display on the page) that accepts the driver and the max timeOutInSeconds as parameters.
