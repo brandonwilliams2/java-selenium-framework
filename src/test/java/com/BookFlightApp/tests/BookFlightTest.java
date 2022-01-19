@@ -1,4 +1,4 @@
-package com.demoApp.tests;
+package com.BookFlightApp.tests;
 
 import com.demoApp.pages.*;
 import com.tests.BaseTest;
