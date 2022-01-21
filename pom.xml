@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.bah.selenium.docker</groupId>
-    <artifactId>selenium-docker</artifactId>
+    <groupId>org.bah.java.selenium</groupId>
+    <artifactId>java-selenium</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>
@@ -41,7 +41,7 @@
     </dependencies>
 
     <build>
-        <finalName>selenium-docker</finalName>
+        <finalName>java-selenium</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

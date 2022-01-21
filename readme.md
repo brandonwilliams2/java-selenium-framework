@@ -36,7 +36,46 @@ Each test class has private member variables that store the test parameters. The
 
 The @Test annotation signifies that the method is a test method. Each test method will utilize page objects and methods to interact with the app page and validate that it is behaving as expected. Each @Test method executes independently of other @Test methods. Test methods can be chained together to create longer e2e tests using @Test(dependsOnMethods = "<preceding-test-method-name>")
 
-Finally, the testng.Assert class asserts whether the test is a "Pass" or "Fail".
+#### BaseTest class
+Parent class for all test classes.
+
+@BeforeTest and @AfterTest annotations mean these methods will run before and after each @Test method execution. 
+
+The setupDriver method creates the WebDriver and shares it with the child test classes. It also sets the host ip / name.
+
+The default WebDriver will be chrome unless the browser type is passed in by the user, by setting the "BROWSER" environment variable.
+
+Likewise the defualt host property will be set to localhost unless the user provides it via "HUB_HOST" environment variable.
+
+The tearDownDriver method brings down the current WebDriver instance.
+
+### Test Suite
+the test-suite.xml (see: 1-book-flight-feature.xml as an example) is where the data-driven test scenarios are defined with the necessary test data.
+
+The parallel="tests" option will cause each test scenario with it's specific data parameters in the test-suite.xml to run at the same time (in parallel).
+
+NOTE: When utilizing parallel="tests", Java will create a thread for each test in the suite and run them in parallel. However, in order for the tests to truly execute in parallel, you will have to 'scale-out' your selenium grid to ensure that there are enough browser instances for your tests to run on. See: Scaling Services on https://github.com/brandonwilliams2/selenium-test-runner.git - for more info on scaling your selenium grid.
+
+### Building a Test docker image
+
+#### pom.xml build
+
+##### maven-compiler-plugin
+specifies the java version for the source and testSource classes
+
+#### maven-dependency-plugin
+copies all dependencies needed to run the project and moves them to the */libs directory
+
+#### maven-jar-plugin
+packages the main and test classes 
+
+When we build the project with 
+
+2 jar files will be produced. The name of these files comes from the <finaalName> of the build section of the pom.xml
+
+ex: `<finalName>java-selenium</finalName>` produces: java-selenium.jar, and java-selenium-test.jar
+
+
 
 ## Setup
 1. First create the Page classes and 'action' methods for all pages in the app that will be tested.
