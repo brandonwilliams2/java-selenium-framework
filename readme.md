@@ -83,7 +83,7 @@ ex: `<finalName>java-selenium</finalName>` produces
 #### Building the test image
 The test image is built using `sh "docker build -t='brandonwilliams2/java-selenium' ."`
 
-Docker will use the Dockerfile to build a docker image that contains the project and project-test .jar files, and all dependencies.
+Docker will use the Dockerfile to build a docker image that contains the project and project-test .jar files, test suites, healthcheck.sh, and all other dependencies.
 
 #### Pushing the test image
 The test image is pushed to docker hub using `docker push brandonwilliams2/java-selenium:latest`
@@ -97,13 +97,13 @@ The test image can be run manually using ` docker run -e HUB_HOST=<host-ip>` -e 
 
 #### Running the test image with selenium grid via docker-compose
 1. see https://github.com/brandonwilliams2/selenium-test-runner
-2. Run docker-compose up docker-compose.yml to quickly spin-up a selenium grid and run tests on it, archieve the results and bring everything down.
+2. Run docker-compose up docker-compose.yml to quickly spin-up a selenium grid and run tests on it, archive the results and bring everything down.
 
-### Healthcheck.sh
+### healthcheck.sh
 
-Healthcheck.sh is a script that that is run when the test image container starts. See: Dockerfile - 'ENTRYPOINT'.
+healthcheck.sh is a script that that is run when the test image container starts. See: Dockerfile - 'ENTRYPOINT'.
 
-The Healthcheck.sh will ping the hub host to check it's status. Once it has confirmed that the hub is up, it will run the command to run execute the tests:
+The healthcheck.sh will ping the hub host to check its status. Once it has confirmed that the hub is up, it will run the command to run execute the tests:
 
 ```
     java -cp java-selenium.jar:java-selenium-tests.jar:libs/* \
