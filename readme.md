@@ -63,17 +63,25 @@ NOTE: When utilizing parallel="tests", Java will create a thread for each test i
 ##### maven-compiler-plugin
 specifies the java version for the source and testSource classes
 
-#### maven-dependency-plugin
+##### maven-dependency-plugin
 copies all dependencies needed to run the project and moves them to the */libs directory
 
 #### maven-jar-plugin
 packages the main and test classes 
 
-When we build the project with 
+#### Packaging project
+When we package the project with `mvn clean package -DskipTests`
 
-2 jar files will be produced. The name of these files comes from the <finaalName> of the build section of the pom.xml
+2 jar files will be produced. The name of these jar files comes from the <finalName> of the build section of the pom.xml
 
-ex: `<finalName>java-selenium</finalName>` produces: java-selenium.jar, and java-selenium-test.jar
+The libs folder will also be created due to the maven-dependency-plugin and will contain all the needed project dependency libraries.
+
+ex: `<finalName>java-selenium</finalName>` produces
+- java-selenium.jar (contains the page object classes)
+- java-selenium-test.jar (contains the test classes)
+
+
+
 
 
 

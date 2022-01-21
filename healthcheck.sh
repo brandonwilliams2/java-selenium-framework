@@ -11,8 +11,8 @@ do
 	sleep 1
 done
 
-# start the java command
-java -cp selenium-docker.jar:selenium-docker-tests.jar:libs/* \
+# start the java command / NOTE: if on Windows use ; as a package separator. Mac/Linux use :
+java -cp java-selenium.jar:java-selenium-tests.jar:libs/* \
     -DHUB_HOST=$HUB_HOST \
     -DBROWSER=$BROWSER \
     org.testng.TestNG $FEATURE

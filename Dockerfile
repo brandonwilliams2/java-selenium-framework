@@ -4,11 +4,11 @@ FROM openjdk:8u191-jre-alpine
 RUN apk add curl jq
 
 # Image workspace
-WORKDIR /usr/share/selenium-docker
+WORKDIR /usr/share/java-selenium
 
 # Add .jar from host to image workspace
-ADD target/selenium-docker.jar          selenium-docker.jar
-ADD target/selenium-docker-tests.jar    selenium-docker-tests.jar
+ADD target/java-selenium.jar            java-selenium.jar
+ADD target/java-selenium-tests.jar      java-selenium-tests.jar
 ADD target/libs                         libs
 
 # Add suite files from host to image workspace
