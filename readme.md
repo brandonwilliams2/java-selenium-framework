@@ -56,21 +56,21 @@ The parallel="tests" option will cause each test scenario with it's specific dat
 
 NOTE: When utilizing parallel="tests", Java will create a thread for each test in the suite and run them in parallel. However, in order for the tests to truly execute in parallel, you will have to 'scale-out' your selenium grid to ensure that there are enough browser instances for your tests to run on. See: Scaling Services on https://github.com/brandonwilliams2/selenium-test-runner.git - for more info on scaling your selenium grid.
 
-### Building a Test docker image
+## Building a Test docker image
 
-#### pom.xml build
+##### Build plug-in's:
 
-##### maven-compiler-plugin
-specifies the java version for the source and testSource classes
+1. ##### maven-compiler-plugin
+    - specifies the java version for the source and testSource classes
 
-##### maven-dependency-plugin
-copies all dependencies needed to run the project and moves them to the */libs directory
+2. ##### maven-dependency-plugin
+    - copies all dependencies needed to run the project and moves them to the */libs directory
 
-#### maven-jar-plugin
-packages the main and test classes 
+3. ##### maven-jar-plugin
+    - packages the main and test classes 
 
 #### Packaging project
-When we package the project with `mvn clean package -DskipTests`
+The project is packaged using `mvn clean package -DskipTests`
 
 2 jar files will be produced. The name of these jar files comes from the <finalName> of the build section of the pom.xml
 
@@ -80,9 +80,37 @@ ex: `<finalName>java-selenium</finalName>` produces
 - java-selenium.jar (contains the page object classes)
 - java-selenium-test.jar (contains the test classes)
 
+#### Building the test image
+The test image is built using `sh "docker build -t='brandonwilliams2/java-selenium' ."`
 
+Docker will use the Dockerfile to build a docker image that contains the project and project-test .jar files, and all dependencies.
 
+#### Pushing the test image
+The test image is pushed to docker hub using `docker push brandonwilliams2/java-selenium:latest`
 
+#### Running the test image
+The test image can be run manually using ` docker run -e HUB_HOST=<host-ip>` -e FEATURE=<test-suite.xml> -v /path/to/test-archive-dir:/usr/share/java-selenium/test-output brandonwilliams2/java-selenium
+
+#### Running the test image with selenium grid
+1. make sure selenium grid is up and running
+2. run the test image 
+
+#### Running the test image with selenium grid via docker-compose
+1. see https://github.com/brandonwilliams2/selenium-test-runner
+2. Run docker-compose up docker-compose.yml to quickly spin-up a selenium grid and run tests on it, archieve the results and bring everything down.
+
+### Healthcheck.sh
+
+Healthcheck.sh is a script that that is run when the test image container starts. See: Dockerfile - 'ENTRYPOINT'.
+
+The Healthcheck.sh will ping the hub host to check it's status. Once it has confirmed that the hub is up, it will run the command to run execute the tests:
+
+```
+    java -cp java-selenium.jar:java-selenium-tests.jar:libs/* \
+        -DHUB_HOST=$HUB_HOST \
+        -DBROWSER=$BROWSER \
+        org.testng.TestNG $FEATURE
+```
 
 
 ## Setup

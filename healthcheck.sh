@@ -2,7 +2,7 @@
 # Environment Variables
 # HUB_HOST
 # BROWSER
-# MODULE
+# FEATURE
 
 echo "Checking if hub is ready - $HUB_HOST"
 

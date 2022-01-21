@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh "docker build -t='brandonwilliams2/selenium-docker' ."
+                sh "docker build -t='brandonwilliams2/java-selenium' ."
             }
         }
         stage('Push Image') {
@@ -17,7 +17,7 @@ pipeline {
 			    withCredentials([usernamePassword(credentialsId: 'DockerHub', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
 			        sh '''
 			            docker login --username=$USER --password=$PASS
-			            docker push brandonwilliams2/selenium-docker:latest
+			            docker push brandonwilliams2/java-selenium:latest
 			        '''
 			    }
             }
