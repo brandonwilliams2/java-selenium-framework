@@ -97,7 +97,7 @@ The test image can be run manually using ` docker run -e HUB_HOST=<host-ip>` -e 
 
 #### Running the test image with selenium grid via docker-compose
 1. see https://github.com/brandonwilliams2/selenium-test-runner
-2. Run docker-compose up docker-compose.yml to quickly spin-up a selenium grid and run tests on it, archive the results and bring everything down.
+2. Run docker-compose up to quickly spin-up a selenium grid and run tests on it, archive the results and bring everything down.
 
 ### healthcheck.sh
 
