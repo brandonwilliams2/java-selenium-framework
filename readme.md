@@ -103,7 +103,7 @@ docker run -e HUB_HOST=<host-ip> -e FEATURE=<test-suite.xml> -v /path/to/test-ar
 
 #### Running the test image with selenium grid
 1. make sure selenium grid is up and running
-2. run the test image 
+2. run the test image using the above command
 
 #### Running the test image with selenium grid via docker-compose
 1. see https://github.com/brandonwilliams2/selenium-test-runner
