@@ -101,7 +101,7 @@ The test image is pushed to docker hub using:
 #### Running the test image
 The test image can be run manually using 
 ``` 
-docker run -e HUB_HOST=<host-ip> -e FEATURE=<test-suite.xml> -v /path/to/test-archive-dir:/usr/share/java-selenium/test-output brandonwilliams2/java-selenium
+docker run -e HUB_HOST=<host-ip> -e BROWSER=<browser-name> -e FEATURE=<test-suite.xml> -v /path/to/test-archive-dir:/usr/share/java-selenium/test-output brandonwilliams2/java-selenium
 ```
 
 #### Running the test image with selenium grid
