@@ -81,15 +81,25 @@ ex: `<finalName>java-selenium</finalName>` produces
 - java-selenium-test.jar (contains the test classes)
 
 #### Building the test image
-The test image is built using `sh "docker build -t='brandonwilliams2/java-selenium' ."`
+The test image is built using: 
+```
+sh "docker build -t='brandonwilliams2/java-selenium' ."
+```
 
 Docker will use the Dockerfile to build a docker image that contains the project and project-test .jar files, test suites, healthcheck.sh, and all other dependencies.
 
 #### Pushing the test image
-The test image is pushed to docker hub using `docker push brandonwilliams2/java-selenium:latest`
+The test image is pushed to docker hub using:
+ ```
+ docker login --username=$USER --password=$PASS
+ docker push brandonwilliams2/java-selenium:latest
+```
 
 #### Running the test image
-The test image can be run manually using ` docker run -e HUB_HOST=<host-ip>` -e FEATURE=<test-suite.xml> -v /path/to/test-archive-dir:/usr/share/java-selenium/test-output brandonwilliams2/java-selenium
+The test image can be run manually using 
+``` 
+docker run -e HUB_HOST=<host-ip> -e FEATURE=<test-suite.xml> -v /path/to/test-archive-dir:/usr/share/java-selenium/test-output brandonwilliams2/java-selenium
+```
 
 #### Running the test image with selenium grid
 1. make sure selenium grid is up and running
