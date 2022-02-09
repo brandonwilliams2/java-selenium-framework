@@ -56,9 +56,6 @@ The parallel="tests" option will cause each test scenario with it's specific dat
 
 NOTE: When utilizing parallel="tests", Java will create a thread for each test in the suite and run them in parallel. However, in order for the tests to truly execute in parallel, you will have to 'scale-out' your selenium grid to ensure that there are enough browser instances for your tests to run on. See: Scaling Services on https://github.com/brandonwilliams2/selenium-test-runner.git - for more info on scaling your selenium grid.
 
-### Run tests localls
-Right click on the test-suite.xml file and select 'Run'
-
 ## Building a Test docker image
 
 ##### Build plug-in's:
