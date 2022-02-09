@@ -3,7 +3,7 @@
 ## Dependencies:
 Java 8
 
-Selenium version 3.141.59
+Selenium version 4.1.2
 
 TestNG 7.4.0
 
